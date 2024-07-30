@@ -1,0 +1,148 @@
+openapi: 3.0.0
+info:
+  version: 1.1.0
+  title: 'Api Документация'
+servers:
+  - url: 'http://localhost/api'
+tags:
+  - name: Guests
+    description: "Гости"
+paths:
+  /guest:
+    get:
+      summary: "GET"
+      description: "GET - http://localhost/api/guest"
+      operationId: getGuests
+      tags:
+        - Guests
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/guest/get.yaml#/GetAllResponse"
+    post:
+      summary: "CREATE"
+      description: "POST - http://localhost/api/guest"
+      operationId: createGuest
+      tags:
+        - Guests
+      requestBody:
+        $ref: "parts/guest/create.yaml#/CreateRequest"
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/guest/create.yaml#/CreateResponse"
+        '422':
+          description: "Error Validation"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/responses.yaml#/ErrorValidation"
+
+  /guest/{id}:
+    get:
+      summary: "GET ITEM"
+      description: "GET - http://localhost/api/guest/{id}"
+      operationId: getGuest
+      tags:
+        - Guests
+      parameters:
+        - in: path
+          required: true
+          name: "id"
+          description: "ID Guest"
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/guest/getItem.yaml#/GetItemResponse"
+        '404':
+          description: "Error Model Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/responses.yaml#/ErrorModelNotFound"
+        '422':
+          description: "Error Validation"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/responses.yaml#/ErrorValidation"
+    put:
+      summary: "UPDATE"
+      description: "PUT - http://localhost/api/guest/{id}"
+      operationId: updateGuest
+      tags:
+        - Guests
+      parameters:
+        - in: path
+          required: true
+          name: "id"
+          description: "ID Guest"
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        $ref: "parts/guest/update.yaml#/UpdateRequest"
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/guest/update.yaml#/UpdateResponse"
+        '404':
+          description: "Error Model Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/responses.yaml#/ErrorModelNotFound"
+        '422':
+          description: "Error Validation"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/responses.yaml#/ErrorValidation"
+    delete:
+      summary: "DELETE"
+      description: "DELETE - http://localhost/api/guest/{id}"
+      operationId: deleteGuest
+      tags:
+        - Guests
+      parameters:
+        - in: path
+          required: true
+          name: "id"
+          description: "ID Guest"
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/guest/delete.yaml#/DeleteResponse"
+        '404':
+          description: "Error Model Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/responses.yaml#/ErrorModelNotFound"
+        '422':
+          description: "Error Validation"
+          content:
+            application/json:
+              schema:
+                $ref: "parts/responses.yaml#/ErrorValidation"

@@ -1,0 +1,36 @@
+ErrorValidation:
+  type: object
+  properties:
+    message:
+      type: string
+      example: "Ошибка валидации данных!"
+    status:
+      type: integer
+      example: 422
+    data:
+      description: "массив с полями и их ошибками валидации"
+      type: object
+      properties:
+        phone:
+          type: array
+          items:
+            type: string
+            example: "Обязательно для заполнения; Неверный тип данных; Неверный формат..."
+        last_name:
+          type: array
+          items:
+            type: string
+            example: "Обязательно для заполнения; Неверный тип данных..."
+
+ErrorModelNotFound:
+  type: object
+  properties:
+    message:
+      type: string
+      example: "Запись не найдена!"
+    status:
+      type: integer
+      example: 404
+    data:
+      description: "пустой массив"
+      type: object

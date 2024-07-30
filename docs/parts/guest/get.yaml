@@ -1,0 +1,31 @@
+GetAllResponse:
+  type: object
+  properties:
+    status:
+      type: integer
+      example: 200
+    data:
+      description: "массив со всеми гостями и их данными"
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 1
+          first_name:
+            type: string
+            example: "Иван"
+          last_name:
+            type: string
+            example: "Иванов"
+          phone:
+            type: string
+            example: "+79999999999"
+          email:
+            type: string
+            example: "test@mail.ru"
+          country:
+            type: string
+            description: "доступные коды стран: ru|tr|ch|eg"
+            example: "ru"

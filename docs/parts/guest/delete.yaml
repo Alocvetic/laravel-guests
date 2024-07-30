@@ -1,0 +1,12 @@
+DeleteResponse:
+  type: object
+  properties:
+    message:
+      type: string
+      example: "Пользователь успешно удален!"
+    status:
+      type: integer
+      example: 200
+    data:
+      description: "пустой массив"
+      type: object
