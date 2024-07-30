@@ -1,0 +1,48 @@
+CreateRequest:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - first_name
+          - last_name
+          - phone
+          - email
+        properties:
+          first_name:
+            type: string
+            example: "Иван"
+            description: "Имя"
+          last_name:
+            type: string
+            example: "Иванов"
+            description: "Фамилия"
+          phone:
+            type: string
+            example: "+79999999999"
+            description: "Телефон"
+          email:
+            type: string
+            example: "test@mail.ru"
+            description: "email"
+          country:
+            type: string
+            example: "ru"
+            description: "доступные коды стран: ru|tr|ch|eg"
+
+CreateResponse:
+  type: object
+  properties:
+    message:
+      type: string
+      example: "Пользователь успешно добавлен!"
+    status:
+      type: integer
+      example: 200
+    data:
+      description: "массив с id созданного гостя"
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
